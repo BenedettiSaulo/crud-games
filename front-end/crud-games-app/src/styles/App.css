@@ -1,0 +1,72 @@
+body {
+    background-color: #2D2E47;
+    height: 100vh;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.nav {
+    background-color: #2F6C82;
+}
+
+.navbar-brand {
+    color: #FFF;
+}
+
+.navbar-brand:hover {
+    cursor: pointer;
+}
+
+.nav-link {
+    color: #FFF;
+}
+
+main {
+    margin: 10px 0;
+}
+
+.game-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: auto;
+    overflow: hidden;
+}
+
+.game-card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.game-card-btns {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2F6C82;
+    color: #FFF;
+    padding: 5px 15px;
+}
+
+.social-media {
+    justify-content: end;
+    list-style: none;
+    display: flex;
+}
+
+.social-media a {
+    padding-left: 13px;
+}
+

@@ -1,0 +1,52 @@
+file httpd-vhost
+<VirtualHost *:80>
+    ##ServerAdmin webmaster@dummy-host2.example.com
+    DocumentRoot "C:/xampp/htdocs"
+    ServerName localhost
+    ##ErrorLog "logs/dummy-host2.example.com-error.log"
+    ##CustomLog "logs/dummy-host2.example.com-access.log" common
+    <Directory "C:/xampp/htdocs">
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+
+        Header always set Access-Control-Allow-Origin "http://localhost:5173"
+        Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE"
+        Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+        Header always set Access-Control-Allow-Credentials "true"
+    </Directory>
+</VirtualHost>
+
+.htaccess
+RewriteEngine On
+
+# Permitir requisições CORS
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "http://localhost:5173"
+    Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+    Header always set Access-Control-Allow-Credentials "true"
+
+    RewriteCond %{REQUEST_METHOD} OPTIONS
+    RewriteRule ^(.*)$ $1 [R=200,L]
+</IfModule>
+
+# Permitir acesso ao arquivo insert_games.php
+<Files "insert_games.php">
+    Allow from all
+</Files>
+
+# Reescrever URL para o insert_games.php
+RewriteRule ^gamedb/insert_games$ /gamedb/insert_games.php [L]
+
+httpd.confi
+Include "conf/extra/httpd-ajp.conf"
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "http://localhost:5173"
+    Header always set Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization"
+    Header always set Access-Control-Allow-Credentials "true"
+
+    RewriteCond %{REQUEST_METHOD} OPTIONS
+    RewriteRule ^(.*)$ $1 [R=200,L]
+</IfModule>
