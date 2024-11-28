@@ -1,6 +1,8 @@
 body {
     background-color: #2D2E47;
-    height: 100vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .loading {
@@ -26,8 +28,21 @@ body {
     color: #FFF;
 }
 
+.container-main {
+    min-height: calc(100vh - 192px);
+}
+
 main {
     margin: 10px 0;
+}
+
+.btn-settings {
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.btn-add {
+    margin-right: 5px;
 }
 
 .game-card {
@@ -36,6 +51,7 @@ main {
     justify-content: space-between;
     width: auto;
     overflow: hidden;
+    height: 100%;
 }
 
 .game-card-img {
@@ -48,6 +64,10 @@ main {
     display: flex;
     justify-content: space-between;
     padding: 10px;
+}
+
+.container-logs {
+    padding: 10px 5px;
 }
 
 footer {
@@ -69,4 +89,3 @@ footer {
 .social-media a {
     padding-left: 13px;
 }
-

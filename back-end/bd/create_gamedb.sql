@@ -55,13 +55,13 @@ CREATE TABLE IF NOT EXISTS `gamedb`.`tb_game_plataform` (
   CONSTRAINT `fk_tb_plataform_game_tb_plataform`
     FOREIGN KEY (`cd_plataform`)
     REFERENCES `gamedb`.`tb_plataform` (`cd_plataform`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_tb_plataform_game_tb_game`
     FOREIGN KEY (`cd_game`)
     REFERENCES `gamedb`.`tb_game` (`cd_game`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -88,16 +88,24 @@ CREATE TABLE IF NOT EXISTS `gamedb`.`tb_game_genre` (
   CONSTRAINT `fk_tb_game_genre_tb_game1`
     FOREIGN KEY (`cd_game`)
     REFERENCES `gamedb`.`tb_game` (`cd_game`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_tb_game_genre_tb_genre1`
     FOREIGN KEY (`cd_genre`)
     REFERENCES `gamedb`.`tb_genre` (`cd_genre`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+CREATE TABLE log (
+ idlog int(11) NOT NULL,
+ datahora timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ numeroregistros int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ALTER TABLE log ADD PRIMARY KEY (idlog);
+ALTER TABLE log MODIFY idlog int(11) NOT NULL AUTO_INCREMENT;
